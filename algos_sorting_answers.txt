@@ -1,0 +1,49 @@
+Write pseudocode for bubble sort.
+FUNCTION bubbleSort(collection)
+   REPEAT
+     SET swapped to false
+     FOR i = FIRST INDEX of collection to LAST INDEX of collection - 1
+       # #3
+       IF collection[i] > collection[i + 1] THEN
+         SET tmp to collection[i]
+         SET collection[i] to collection[i + 1]
+         SET collection[i + 1] to tmp
+         SET swapped to true
+       END IF
+     END FOR
+   UNTIL swapped is FALSE
+   RETURN collection
+ END FUNCTION
+
+Write pseudocode for quicksort.
+function partitionFunc(left, right, pivot)
+   leftPointer = left
+   rightPointer = right - 1
+
+   WHILE True do
+      WHILE A[++leftPointer] < pivot do
+         //do-nothing
+      END WHILE
+      WHILE rightPointer > 0 && A[--rightPointer] > pivot do
+         //do-nothing
+      END WHILE
+      IF leftPointer >= rightPointer
+         BREAK
+      ELSE
+         swap leftPointer,rightPointer
+      END IF
+   END WHILE
+   SWAP leftPointer,right
+   RETURN leftPointer
+
+END FUNCTION
+
+We talked about time complexity in a previous checkpoint, and how to get an idea of the efficiency of an algorithm. After looking at the pseudocode for the above sorting methods, identify why merge sort and quick sort are much more efficient than the others. Walking through each algorithm with a few sample collections may help.
+-The quickSort and mergeSort algorithms are both fast although quickSort is considered the fastest. They run on log linear growth rate (O(n log n)). Both are divide-and-conquer algorithms.The merge sort has the added advantage of being stable.
+
+All of the sorts addressed in this checkpoint are known as comparison sorts. Research bucket sort and explain how it works. What is the ideal input for bucket sort?
+-It separates array into smaller groups or buckets and sorts them individually using a sub-sorting algorithm or recursive call to itself and then combines the result. You can use it as an external sorting algorithm especially if you need to sort a list that is so huge you can’t fit it into memory.
+-Create an empty array.
+-Loop through the original array and put each object in a “bucket”.
+-Sort each of the non-empty buckets
+-Check the buckets in order and then put all objects back into the original array.
